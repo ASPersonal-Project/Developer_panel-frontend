@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EduTimeLineItem = ({duration,degree,place,result}) => {
+const EducationCardItem = ({duration,degree,place,result}) => {
     return (
             <div className='grid grid-cols-5'>
                 <div className='fontxl col-span-5 md:col-span-1'>{duration}</div>
@@ -13,4 +13,4 @@ const EduTimeLineItem = ({duration,degree,place,result}) => {
     )
 }
 
-export default EduTimeLineItem;
+export default EducationCardItem;

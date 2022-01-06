@@ -1,27 +1,30 @@
 import React from 'react';
-import {Timeline} from 'antd';
-import EduTimeLineItem from './EduTimeLineItem';
-import {educationDetails} from '../../utils/commenDetails';
+import {Timeline,Card} from 'antd';
+import EducationCardItem from './EducationCardItem';
 
 
 const EducationCard = () => {
+    const aa = [1,2,3];
     return (
+        <Card>
         <div className='p-5'>
+            <div>Education</div>
             <Timeline>
-                {educationDetails.map( (edu,index) => {
+                {aa.map( (edu,index) => {
                     return(
                         <Timeline.Item key={index} color="green">
-                            <EduTimeLineItem 
-                                duration= {edu.duration}
-                                degree={edu.degree}
-                                place={edu.place}
-                                result={edu.result}
+                            <EducationCardItem 
+                                duration= "2021-2020"
+                                degree="afsa"
+                                place="afds"
+                                result="sdfsfs"
                             />
                         </Timeline.Item>    
                     )
                 })}
             </Timeline>,
         </div>
+        </Card>
     )
 }
 
