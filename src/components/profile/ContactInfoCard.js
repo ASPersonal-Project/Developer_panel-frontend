@@ -1,22 +1,39 @@
 import React from 'react';
 import {Card} from 'antd';
+import {MailFilled,MobileFilled, EnvironmentFilled} from '@ant-design/icons'
 
 const ContactInfoCard = () => {
     return (
         <div>
-            <div>
+            <div className='m-3'>
         <Card>
-            <div>Contact Info</div>
-        <div className='grid grid-cols-3 text-xl'>
-            <div>Email</div>
+            <div className='text-xl'>Contact Info</div>
+        <div className='grid grid-cols-3 text-lg my-3'>
+            <div className='flex items-center'>
+                <div className='flex mr-2'>
+                    <MailFilled/>
+                </div> 
+            <div className='inline-block'>Email</div>
+            </div>
+            
             <div className='col-span-2'>anjanashakthi95@gmail.com</div>
         </div>
-        <div className='grid grid-cols-3 text-xl'>
-            <div>Mobile</div>
+        <div className='grid grid-cols-3 text-lg my-3'>
+            <div className='flex items-center'>
+                <div className='flex mr-2'>
+                    <MobileFilled/>
+                </div> 
+            <div className='inline-block'>Mobile</div>
+            </div>
             <div className='col-span-2'>0712575774</div> 
         </div>
-        <div className='grid grid-cols-3 text-xl'>
-            <div>Address</div>
+        <div className='grid grid-cols-3 text-lg my-3'>
+            <div className='flex items-center'>
+                <div className='flex mr-2'>
+                    <EnvironmentFilled/>
+                </div> 
+            <div className='inline-block'>Address</div>
+            </div>
             <div className='col-span-2'>66/A, Rubberhena, Puwakwatta, Kamburugamuwa</div> 
         </div>
         </Card>

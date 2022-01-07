@@ -5,10 +5,10 @@ import ExperienceCardItem from './ExperienceCardItem'
 const ExperienceCard = ({company,place,jobs}) => {
     const aa = [1,2,3];
     return (
+        <div className='m-3'>
         <Card>
-        <div className='p-5'>
-            <p className='font3xl  mb-1'>aaaa</p>
-            <p className='fontlg'>ddddddd</p>
+        <div className='p-4'>
+            <p className='text-2xl'>Experience</p>
             <Timeline>
                 {aa.map((item,index) => {
                     return(
@@ -24,6 +24,7 @@ const ExperienceCard = ({company,place,jobs}) => {
             </Timeline>
         </div>
         </Card>
+        </div>
     )
 }
 
