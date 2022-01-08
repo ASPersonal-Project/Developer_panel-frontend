@@ -1,13 +1,16 @@
 import React from 'react';
 import {Card} from 'antd';
-import {MailFilled,MobileFilled, EnvironmentFilled} from '@ant-design/icons'
+import {MailFilled,MobileFilled, EnvironmentFilled, EditFilled} from '@ant-design/icons'
 
 const ContactInfoCard = () => {
     return (
         <div>
             <div className='m-3'>
         <Card>
-            <div className='text-xl'>Contact Info</div>
+            <div className='flex justify-between'>
+                <p className='text-2xl'>Contact Info</p>
+                <div><EditFilled /></div>
+            </div>
         <div className='grid grid-cols-3 text-lg my-3'>
             <div className='flex items-center'>
                 <div className='flex mr-2'>

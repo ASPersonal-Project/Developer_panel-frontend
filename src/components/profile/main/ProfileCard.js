@@ -1,10 +1,12 @@
 import React from 'react';
 import { Image,Card } from 'antd';
+import { EditFilled } from '@ant-design/icons';
 
 const ProfileCard = () => {
     return (
         <div className='m-3'>
             <Card>
+                <div className='flex justify-end'><EditFilled /></div>
                 <div className='grid grid-cols-3'>
                     <div className='col-span-1 my-3'>
                         <Image
@@ -15,8 +17,8 @@ const ProfileCard = () => {
                     </div>
                     <div className='col-span-2 flex justify-center items-center text-center'>
                         <div>
-                        <div className='text-5xl'>Anjana Shakthi</div> 
-                        <div className='text-3xl'>Associate Software Engineer</div>
+                            <div className='text-5xl'>Anjana Shakthi</div> 
+                            <div className='text-3xl'>Associate Software Engineer</div>
                         </div>
 
                     </div>

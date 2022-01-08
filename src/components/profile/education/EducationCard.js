@@ -1,6 +1,7 @@
 import React from 'react';
 import {Timeline,Card} from 'antd';
 import EducationCardItem from './EducationCardItem';
+import { PlusCircleFilled } from '@ant-design/icons';
 
 
 const EducationCard = () => {
@@ -9,7 +10,10 @@ const EducationCard = () => {
         <div className='m-3'>
         <Card>
         <div className='p-4'>
-            <div className='text-2xl mb-3'>Education</div>
+            <div className='flex justify-between'>
+                <p className='text-2xl'>Education</p>
+                <div><PlusCircleFilled /></div>
+            </div>
             <Timeline>
                 {aa.map( (edu,index) => {
                     return(

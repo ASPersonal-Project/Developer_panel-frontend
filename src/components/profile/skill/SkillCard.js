@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'antd';
-import {PropertySafetyOutlined} from '@ant-design/icons';
+import {PropertySafetyOutlined, EditFilled} from '@ant-design/icons';
 
 const SkillCard = () => {
     const aa = [1,2,3];
@@ -8,7 +8,10 @@ const SkillCard = () => {
         <div className='m-3'>
             
             <Card>
-            <div className='text-xl'>Skills</div>
+                <div className='flex justify-between'>
+                    <p className='text-2xl'>Language</p>
+                    <div><EditFilled /></div>
+                </div>
              {aa.map( a => {
             return (
                 <div className='grid grid-cols-2 text-lg'>
