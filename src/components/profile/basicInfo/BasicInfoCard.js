@@ -1,15 +1,22 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Card} from 'antd';
+import BasicInfoModal from './BasicInfoModal';
 import {MailFilled,MobileFilled, EnvironmentFilled, EditFilled, HomeFilled} from '@ant-design/icons'
 
 const BasicInfoCard = () => {
+
+    const [visible,setVisible] = useState(false);
+
+    const handleModalVisible = (modalVisible) => {
+        setVisible(modalVisible)
+    }
     return (
         <div>
             <div className='m-3'>
         <Card>
             <div className='flex justify-between'>
                 <p className='text-2xl'>Basic Info</p>
-                <div><EditFilled /></div>
+                <div><EditFilled onClick={() => handleModalVisible(true)}/></div>
             </div>
         <div className='grid grid-cols-3 text-lg my-3'>
             <div className='flex items-center'>
@@ -49,6 +56,10 @@ const BasicInfoCard = () => {
             <div className='col-span-2'>From Kamburugamuwa, Sri Lanka</div> 
         </div>
         </Card>
+        <BasicInfoModal 
+                visible={visible}
+                handleModalVisible={handleModalVisible}
+            />
         </div>
         </div>
     )

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Modal,Button,Form,Input } from 'antd';
+import { Modal,Button,Form,Input,DatePicker } from 'antd';
 
-const { TextArea } = Input;
+const {RangePicker} = DatePicker;
+const {TextArea} = Input;
 
-const IntroModal = ({visible,handleModalVisible}) => {
+const EducationModal = ({visible,handleModalVisible}) => {
 
   const handleSubmit = (value) => {
     console.log(value)
@@ -11,7 +12,7 @@ const IntroModal = ({visible,handleModalVisible}) => {
     return (
         <div>
              <Modal
-                title="Edit Intro"
+                title="Edit BasicInfo"
                 centered
                 visible={visible}
                 onOk={() => handleModalVisible(false)}
@@ -25,16 +26,19 @@ const IntroModal = ({visible,handleModalVisible}) => {
                   autoComplete="off"
                 >
                     <Form.Item
-                      name="name"
+                      name="university"
                       rules={[{ required: true, message: 'Please input your username!' }]}
                     >
-                      <Input placeholder='Full Name'/>
+                      <Input placeholder='University'/>
                     </Form.Item>
                     <Form.Item
-                      name="headline"
+                      name="degree"
                       rules={[{ required: true, message: 'Please input your username!' }]}
                     >
-                      <Input placeholder='Headline'/>
+                      <Input placeholder='Degree'/>
+                    </Form.Item>
+                    <Form.Item>
+                    <RangePicker picker="year"/>
                     </Form.Item>
                     <Form.Item
                       name="description"
@@ -49,7 +53,7 @@ const IntroModal = ({visible,handleModalVisible}) => {
                     </Form.Item>
                     <Form.Item>
                     <Button type="primary" htmlType="submit">
-                        Submit
+                        Save
                       </Button>
                     </Form.Item>
                   </Form>
@@ -58,4 +62,4 @@ const IntroModal = ({visible,handleModalVisible}) => {
     )
 }
 
-export default IntroModal
+export default EducationModal;

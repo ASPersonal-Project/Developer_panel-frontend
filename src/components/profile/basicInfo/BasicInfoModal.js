@@ -3,7 +3,7 @@ import { Modal,Button,Form,Input } from 'antd';
 
 const { TextArea } = Input;
 
-const IntroModal = ({visible,handleModalVisible}) => {
+const BasicInfoModal = ({visible,handleModalVisible}) => {
 
   const handleSubmit = (value) => {
     console.log(value)
@@ -11,7 +11,7 @@ const IntroModal = ({visible,handleModalVisible}) => {
     return (
         <div>
              <Modal
-                title="Edit Intro"
+                title="Edit BasicInfo"
                 centered
                 visible={visible}
                 onOk={() => handleModalVisible(false)}
@@ -25,31 +25,33 @@ const IntroModal = ({visible,handleModalVisible}) => {
                   autoComplete="off"
                 >
                     <Form.Item
-                      name="name"
+                      name="email"
                       rules={[{ required: true, message: 'Please input your username!' }]}
                     >
-                      <Input placeholder='Full Name'/>
+                      <Input placeholder='Email'/>
                     </Form.Item>
                     <Form.Item
-                      name="headline"
+                      name="mobile"
                       rules={[{ required: true, message: 'Please input your username!' }]}
                     >
-                      <Input placeholder='Headline'/>
+                      <Input placeholder='Mobile'/>
                     </Form.Item>
                     <Form.Item
-                      name="description"
+                      name="city"
                       rules={[{ required: true, message: 'Please input your username!' }]}
                     >
-                      <TextArea
-                      //   value={value}
-                      //   onChange={this.onChange}
-                        placeholder="About"
-                        autoSize={{ minRows: 3, maxRows: 5 }}
-                      />
+                      <Input placeholder='City'/>
                     </Form.Item>
+                    <Form.Item
+                      name="address"
+                      rules={[{ required: true, message: 'Please input your username!' }]}
+                    >
+                      <Input placeholder='Address'/>
+                    </Form.Item>
+                    
                     <Form.Item>
                     <Button type="primary" htmlType="submit">
-                        Submit
+                        Save
                       </Button>
                     </Form.Item>
                   </Form>
@@ -58,4 +60,4 @@ const IntroModal = ({visible,handleModalVisible}) => {
     )
 }
 
-export default IntroModal
+export default BasicInfoModal;

@@ -1,10 +1,17 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Timeline,Card} from 'antd';
 import EducationCardItem from './EducationCardItem';
 import { PlusCircleFilled } from '@ant-design/icons';
+import EducationModal from './EducationModal';
 
 
 const EducationCard = () => {
+    const [visible,setVisible] = useState(false);
+
+    const handleModalVisible = (modalVisible) => {
+        setVisible(modalVisible)
+    }
+
     const aa = [1,2,3];
     return (
         <div className='m-3'>
@@ -12,7 +19,7 @@ const EducationCard = () => {
         <div className='p-4'>
             <div className='flex justify-between'>
                 <p className='text-2xl'>Education</p>
-                <div><PlusCircleFilled /></div>
+                <div><PlusCircleFilled onClick={() => handleModalVisible(true)}/></div>
             </div>
             <Timeline>
                 {aa.map( (edu,index) => {
@@ -30,6 +37,10 @@ const EducationCard = () => {
             </Timeline>,
         </div>
         </Card>
+        <EducationModal
+                visible={visible}
+                handleModalVisible={handleModalVisible}
+            />
         </div>
     )
 }
