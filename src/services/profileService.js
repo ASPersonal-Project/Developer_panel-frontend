@@ -2,11 +2,11 @@ import httpService from "./htttpservice";
 
 class ProfileServie{
     fetchIntro(){
-        return httpService.get('/')
+        return httpService.get('/user')
     }
 
     updateIntro(payload){
-        return httpService.post('/',payload)
+        return httpService.post('/user',payload)
     }
 }
 

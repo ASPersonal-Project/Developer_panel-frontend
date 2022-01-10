@@ -1,12 +1,34 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import { Modal,Button,Form,Input } from 'antd';
+import profileService from '../../../services/profileService';
+
 
 const { TextArea } = Input;
 
-const IntroModal = ({visible,handleModalVisible}) => {
+const IntroModal = ({visible,handleModalVisible,data,fetchHandler}) => {
+  const [form] = Form.useForm();
+
+  useEffect(() => {
+   if(data){
+    form.setFieldsValue({ name: data.full_name});
+    form.setFieldsValue({ jobPosition: data.headline});
+    form.setFieldsValue({ description: data.description});
+   }
+  }, [data])
 
   const handleSubmit = (value) => {
     console.log(value)
+    const payload = {
+      full_name: value.name,
+      job_position: value.jobPosition,
+      description: value.description
+    }
+    try {
+      profileService.updateIntro(payload);
+      fetchHandler();
+    } catch (error) {
+      console.log(error);
+    }
   }
     return (
         <div>
@@ -23,6 +45,7 @@ const IntroModal = ({visible,handleModalVisible}) => {
                   initialValues={{ remember: true }}
                   onFinish={handleSubmit}
                   autoComplete="off"
+                  form={form}
                 >
                     <Form.Item
                       name="name"
@@ -31,10 +54,10 @@ const IntroModal = ({visible,handleModalVisible}) => {
                       <Input placeholder='Full Name'/>
                     </Form.Item>
                     <Form.Item
-                      name="headline"
+                      name="jobPosition"
                       rules={[{ required: true, message: 'Please input your username!' }]}
                     >
-                      <Input placeholder='Headline'/>
+                      <Input placeholder='Job Position'/>
                     </Form.Item>
                     <Form.Item
                       name="description"

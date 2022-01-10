@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Image,Card } from 'antd';
 import { EditFilled } from '@ant-design/icons';
 import IntroModal from './IntroModal';
+import profileService from '../../../services/profileService';
 
 const IntroCard = () => {
     const [visible,setVisible] = useState(false);
+    const [data,setData] = useState(null)
+
+    useEffect(() => {
+        fetchIntro();
+    }, [])
+
+    const fetchIntro = async () => {
+        try {
+            const data = await profileService.fetchIntro();
+            setData(data.data);
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
 
     const handleModalVisible = (modalVisible) => {
         setVisible(modalVisible)
@@ -24,18 +40,19 @@ const IntroCard = () => {
                     </div>
                     <div className='col-span-2 flex justify-center items-center text-center'>
                         <div>
-                            <div className='text-5xl'>Anjana Shakthi</div> 
-                            <div className='text-3xl'>Associate Software Engineer</div>
+                            <div className='text-5xl'>{data && data.full_name}</div> 
+                            <div className='text-3xl'>{data && data.headline}</div>
                         </div>
 
                     </div>
                 </div>
-            <div>I'm a final year Software Engineering Undergraduate from the University of Kelaniya Sri Lanka.
-Web and Mobile Developer JavaScript| TypeScript | React| NextJs |Redux | GraphQL | Nodejs (expressjs / NestJs) | React Native | MongoDB | HTML | CSS| MySQL</div>
+            <div>{data && data.description}</div>
             </Card>
             <IntroModal 
                 visible={visible}
                 handleModalVisible={handleModalVisible}
+                data={data}
+                fetchHandler={fetchIntro}
             />
         </div>
     )
