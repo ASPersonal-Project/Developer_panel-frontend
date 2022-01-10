@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import { Card } from 'antd';
 import {PropertySafetyOutlined, EditFilled} from '@ant-design/icons';
+import SkillModal from './SkillModal';
 
 const SkillCard = () => {
 
@@ -33,7 +34,7 @@ const SkillCard = () => {
                 </div>
                 </div>
                 <div className='mb-5'>
-        <p className='text-xl'>Interpersonal Skill</p>
+            <p className='text-xl'>Interpersonal Skill</p>
             <div className='grid grid-cols-2 text-lg'>
                     {aa.map( a => {
                     return (
@@ -49,7 +50,10 @@ const SkillCard = () => {
                 </div>
                 </div>
         </Card>
-
+        <SkillModal
+                    visible={visible}
+                    handleModalVisible={handleModalVisible}
+            />
         </div>
     )
 }

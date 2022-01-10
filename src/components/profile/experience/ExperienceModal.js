@@ -1,8 +1,6 @@
 import React from 'react';
 import { Modal,Button,Form,Input,DatePicker,Select } from 'antd';
 
-
-const {TextArea} = Input;
 const { Option } = Select;
 
 const ExperienceModal = ({visible,handleModalVisible}) => {
