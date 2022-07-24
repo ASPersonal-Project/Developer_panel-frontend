@@ -1,12 +1,34 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Modal,Button,Form,Input } from 'antd';
 
-const { TextArea } = Input;
+const BasicInfoModal = ({visible,handleModalVisible,data,refreshHandler}) => {
 
-const BasicInfoModal = ({visible,handleModalVisible}) => {
+  const [form] = Form.useForm();
+
+  useEffect(() => {
+   if(data){
+    form.setFieldsValue({ email: data.email});
+    form.setFieldsValue({ mobile: data.mobile});
+    form.setFieldsValue({ city: data.city});
+    form.setFieldsValue({address: data.address})
+   }
+  }, [data])
 
   const handleSubmit = (value) => {
-    console.log(value)
+    const payload = {
+      email: value.email,
+      mobile: value.mobile,
+      city: value.city,
+      address: value.address
+    }
+
+    try {
+      profileService.updateIntro(payload);
+      refreshHandler();
+      handleModalVisible(false)
+    } catch (error) {
+      console.log(error);
+    }
   }
     return (
         <div>
@@ -23,6 +45,7 @@ const BasicInfoModal = ({visible,handleModalVisible}) => {
                   initialValues={{ remember: true }}
                   onFinish={handleSubmit}
                   autoComplete="off"
+                  form={form}
                 >
                     <Form.Item
                       name="email"

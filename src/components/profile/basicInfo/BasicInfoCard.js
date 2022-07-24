@@ -1,11 +1,28 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {Card} from 'antd';
 import BasicInfoModal from './BasicInfoModal';
 import {MailFilled,MobileFilled, EnvironmentFilled, EditFilled, HomeFilled} from '@ant-design/icons'
+import profileService from '../../../services/profileService';
 
 const BasicInfoCard = () => {
 
     const [visible,setVisible] = useState(false);
+    const [data,setData] = useState(null);
+
+    useEffect(() => {
+        fetchBasicInfo();
+    }, [])
+
+    const fetchBasicInfo = async () => {
+        try {
+            const data = await profileService.fetchUser();
+            console.log('***********',data)
+            setData(data.data);
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
 
     const handleModalVisible = (modalVisible) => {
         setVisible(modalVisible)
@@ -59,6 +76,8 @@ const BasicInfoCard = () => {
         <BasicInfoModal 
                 visible={visible}
                 handleModalVisible={handleModalVisible}
+                data={data}
+                refreshHandler={fetchBasicInfo}
             />
         </div>
         </div>

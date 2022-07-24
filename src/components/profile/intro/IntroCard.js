@@ -14,7 +14,7 @@ const IntroCard = () => {
 
     const fetchIntro = async () => {
         try {
-            const data = await profileService.fetchIntro();
+            const data = await profileService.fetchUser();
             setData(data.data);
         } catch (error) {
             console.log(error);
@@ -41,7 +41,7 @@ const IntroCard = () => {
                     <div className='col-span-2 flex justify-center items-center text-center'>
                         <div>
                             <div className='text-5xl'>{data && data.full_name}</div> 
-                            <div className='text-3xl'>{data && data.headline}</div>
+                            <div className='text-3xl'>{data && data.job_position}</div>
                         </div>
 
                     </div>
@@ -52,7 +52,7 @@ const IntroCard = () => {
                 visible={visible}
                 handleModalVisible={handleModalVisible}
                 data={data}
-                fetchHandler={fetchIntro}
+                refreshHandler={fetchIntro}
             />
         </div>
     )

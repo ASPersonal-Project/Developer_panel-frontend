@@ -5,19 +5,18 @@ import profileService from '../../../services/profileService';
 
 const { TextArea } = Input;
 
-const IntroModal = ({visible,handleModalVisible,data,fetchHandler}) => {
+const IntroModal = ({visible,handleModalVisible,data,refreshHandler}) => {
   const [form] = Form.useForm();
 
   useEffect(() => {
    if(data){
     form.setFieldsValue({ name: data.full_name});
-    form.setFieldsValue({ jobPosition: data.headline});
+    form.setFieldsValue({ jobPosition: data.job_position});
     form.setFieldsValue({ description: data.description});
    }
   }, [data])
 
   const handleSubmit = (value) => {
-    console.log(value)
     const payload = {
       full_name: value.name,
       job_position: value.jobPosition,
@@ -25,7 +24,8 @@ const IntroModal = ({visible,handleModalVisible,data,fetchHandler}) => {
     }
     try {
       profileService.updateIntro(payload);
-      fetchHandler();
+      refreshHandler();
+      handleModalVisible(false)
     } catch (error) {
       console.log(error);
     }
